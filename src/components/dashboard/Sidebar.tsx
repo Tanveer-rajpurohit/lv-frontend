@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
-import { Home, BookOpen, History, Trash2, Settings, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Home, BookOpen, History, Trash2, Settings, Plus, ChevronLeft, ChevronRight, User, CreditCard } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { useRouter, usePathname } from 'next/navigation';
+import { useAuthStore } from '@/src/store/slices/auth.slice';
 
 interface SidebarProps {
   isExpanded: boolean;
@@ -12,15 +14,48 @@ interface SidebarProps {
 }
 
 const navItems = [
-  { id: 'home', label: 'Home', icon: Home },
+  { id: 'home', label: 'Home', icon: Home, path: '/dashboard/home' },
   { id: 'reference', label: 'Reference Manager', icon: BookOpen },
   { id: 'history', label: 'History', icon: History },
+];
+
+const bottomNavItems = [
+  { id: 'trash-bin', label: 'Trash Bin', icon: Trash2, path: '/dashboard/trash-bin' },
+  { id: 'subscription', label: 'Subscription', icon: CreditCard, path: '/dashboard/subscription' },
+  { id: 'settings', label: 'Settings', icon: Settings, path: '/dashboard/settings' },
 ];
 
 export default function Sidebar({ isExpanded, activeNav, onToggle, onNavClick, onNewProject }: SidebarProps) {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const navItemRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
+  const router = useRouter();
+  const pathname = usePathname();
+  const { profile } = useAuthStore();
+
+  // Determine active nav based on current pathname
+  const getActiveNavFromPath = () => {
+    if (pathname.includes('/dashboard/trash-bin')) return 'trash-bin';
+    if (pathname.includes('/dashboard/subscription')) return 'subscription';
+    if (pathname.includes('/dashboard/settings')) return 'settings';
+    if (pathname.includes('/dashboard/profile')) return 'profile';
+    if (pathname.includes('/dashboard/reference')) return 'reference';
+    if (pathname.includes('/dashboard/history')) return 'history';
+    if (pathname.includes('/dashboard/home')) return 'home';
+    return 'home';
+  };
+
+  const currentActiveNav = activeNav || getActiveNavFromPath();
+
+  // Get user display name and initials
+  const getUserDisplayName = () => {
+    return profile?.name || profile?.username || 'User';
+  };
+
+  const getUserInitials = () => {
+    const name = getUserDisplayName();
+    return name.charAt(0).toUpperCase();
+  };
 
   useEffect(() => {
     // Set initial width immediately on first render
@@ -132,7 +167,7 @@ export default function Sidebar({ isExpanded, activeNav, onToggle, onNavClick, o
             }}
             onMouseEnter={() => handleNavHover(navItemRefs.current[index], true)}
             onMouseLeave={() => handleNavHover(navItemRefs.current[index], false)}
-            onClick={() => onNavClick(item.id)}
+            onClick={() => item.path ? router.push(item.path) : onNavClick(item.id)}
             className={`w-full flex items-center ${
               isExpanded ? 'gap-3 px-6' : 'justify-center px-3'
             } py-3 text-[#393634] transition-colors ${
@@ -148,38 +183,62 @@ export default function Sidebar({ isExpanded, activeNav, onToggle, onNavClick, o
 
       {/* Bottom Section */}
       <div className="border-t border-stone-200 p-4 space-y-3">
+        {bottomNavItems.map((item, index) => (
+          <button
+            key={item.id}
+            onClick={() => router.push(item.path)}
+            className={`w-full flex items-center ${
+              isExpanded ? 'gap-3 px-2' : 'justify-center'
+            } py-2 text-[#393634] hover:bg-stone-50 rounded transition-all ${
+              currentActiveNav === item.id ? 'bg-stone-100' : ''
+            }`}
+            title={!isExpanded ? item.label : ''}
+          >
+            <item.icon size={20} />
+            {isExpanded && <span>{item.label}</span>}
+          </button>
+        ))}
         <button
+          onClick={() => router.push('/dashboard/profile')}
           className={`w-full flex items-center ${
             isExpanded ? 'gap-3 px-2' : 'justify-center'
-          } py-2 text-[#393634] hover:bg-stone-50 rounded transition-all`}
-          title={!isExpanded ? 'Trash Bin' : ''}
+          } py-2 text-[#393634] hover:bg-stone-50 rounded transition-all ${
+            currentActiveNav === 'profile' ? 'bg-stone-100' : ''
+          }`}
+          title={!isExpanded ? 'Profile' : ''}
         >
-          <Trash2 size={20} />
-          {isExpanded && <span>Trash Bin</span>}
-        </button>
-        <button
-          className={`w-full flex items-center ${
-            isExpanded ? 'gap-3 px-2' : 'justify-center'
-          } py-2 text-[#393634] hover:bg-stone-50 rounded transition-all`}
-          title={!isExpanded ? 'Settings' : ''}
-        >
-          <Settings size={20} />
-          {isExpanded && <span>Settings</span>}
-        </button>
-        {isExpanded ? (
-          <div className="flex items-center gap-3 px-2 py-2">
-            <div className="w-6 h-6 rounded-full bg-stone-300 flex items-center justify-center">
-              <span className="text-xs font-semibold text-stone-600">P</span>
+          {isExpanded ? (
+            <div className="flex items-center gap-3 px-2 py-2">
+              {profile?.picture ? (
+                <img 
+                  src={profile.picture} 
+                  alt={getUserDisplayName()}
+                  className="w-6 h-6 rounded-full object-cover"
+                />
+              ) : (
+                <div className="w-6 h-6 rounded-full bg-stone-300 flex items-center justify-center">
+                  <span className="text-xs font-semibold text-stone-600">{getUserInitials()}</span>
+                </div>
+              )}
+              <span className="text-[#393634] text-sm truncate">{getUserDisplayName()}</span>
             </div>
-            <span className="text-[#393634] text-sm truncate">prabhjotjaswal08</span>
-          </div>
-        ) : (
-          <div className="flex justify-center py-2">
-            <div className="w-8 h-8 rounded-full bg-stone-300 flex items-center justify-center" title="prabhjotjaswal08">
-              <span className="text-sm font-semibold text-stone-600">P</span>
+          ) : (
+            <div className="flex justify-center py-2">
+              {profile?.picture ? (
+                <img 
+                  src={profile.picture} 
+                  alt={getUserDisplayName()}
+                  title={getUserDisplayName()}
+                  className="w-8 h-8 rounded-full object-cover"
+                />
+              ) : (
+                <div className="w-8 h-8 rounded-full bg-stone-300 flex items-center justify-center" title={getUserDisplayName()}>
+                  <span className="text-sm font-semibold text-stone-600">{getUserInitials()}</span>
+                </div>
+              )}
             </div>
-          </div>
-        )}
+          )}
+        </button>
       </div>
     </aside>
   );

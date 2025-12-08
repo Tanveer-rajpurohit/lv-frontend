@@ -1,9 +1,9 @@
 "use client"
 
 import { useState } from 'react';
-import Sidebar from '@/src/components/features/dashboard/Sidebar';
-import Home from '@/src/components/features/dashboard/home/Home';
-import NewProjectModal from '@/src/components/features/dashboard/NewProjectModal';
+import Sidebar from '@/src/components/dashboard/Sidebar';
+import Home from '@/src/components/dashboard/home/Home';
+import NewProjectModal from '@/src/components/dashboard/NewProjectModal';
 
 // Data
 const categories = [
@@ -117,7 +117,7 @@ export default function App() {
         onNewProject={() => setIsNewProjectModalOpen(true)}
       />
       
-      <Home projects={projects} categories={categories} />
+      <Home categories={categories} />
       
       <NewProjectModal
         isOpen={isNewProjectModalOpen}

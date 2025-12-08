@@ -1,3 +1,5 @@
+"use client";
+
 import type {
   APIResponse,
   AuthTokens,
@@ -12,7 +14,6 @@ import type {
   ResetPasswordRequest,
   SignupRequest,
   SignupResponseData,
-  User,
   UserProfile,
   UserSetupRequest,
   UserSetupResponse,
@@ -21,8 +22,8 @@ import type {
   Verify2FARequest,
   VerifyOTPRequest,
 } from "../types/auth.types";
-
-const API_BASE_URL = ""; // Use relative URLs for Next.js proxy
+import { FetchClient } from "../lib/api/client";
+import { STORAGE_KEYS } from "../constants/storage-keys";
 
 const API_ENDPOINTS = {
   PREREGISTER: "api/auth/check-preregister",
@@ -37,38 +38,9 @@ const API_ENDPOINTS = {
   ME: "api/users/profile",
 } as const;
 
-async function request<T>(
-  path: string,
-  init: RequestInit,
-): Promise<APIResponse<T>> {
-  const url = `${API_BASE_URL}/${path}`.replace(/\/+/g, "/");
-  console.log('Final API URL:', url); // Debug log
-
-  const res = await fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-      ...(init.headers ?? {}),
-    },
-    ...init,
-  });
-
-  const data = (await res.json().catch(() => ({}))) as APIResponse<T>;
-
-  if (!res.ok) {
-    return {
-      success: false,
-      message: data?.message || res.statusText || "Request failed",
-      data: data.data,
-      timestamp: data.timestamp,
-    };
-  }
-
-  return data;
-}
-
 export class AuthService {
-  private readonly accessTokenKey = 'access_token';
-  private readonly refreshTokenKey = 'refresh_token';
+  private readonly accessTokenKey = STORAGE_KEYS.ACCESS_TOKEN;
+  private readonly refreshTokenKey = STORAGE_KEYS.REFRESH_TOKEN;
 
   private getAuthHeaders(): Record<string, string> {
     const tokens = this.getStoredTokens();
@@ -87,82 +59,69 @@ export class AuthService {
     path: string,
     init: RequestInit = {},
   ): Promise<APIResponse<T>> {
-    const url = `${API_BASE_URL}/${path}`.replace(/\/+/g, "/").replace(/^http:\/\//, "http://");
-    console.log('Auth API URL:', url); // Debug log
-
-    const res = await fetch(url, {
+    // Use FetchClient but add auth headers
+    const config: RequestInit = {
+      ...init,
       headers: {
         ...this.getAuthHeaders(),
         ...(init.headers ?? {}),
       },
-      ...init,
-    });
-
-    const data = (await res.json().catch(() => ({}))) as APIResponse<T>;
-
-    if (!res.ok) {
-      return {
-        success: false,
-        message: data?.message || res.statusText || "Request failed",
-        data: data.data,
-        timestamp: data.timestamp,
-      };
-    }
-
-    return data;
+    };
+    
+    return FetchClient.makeRequest<T>(path, config);
   }
 
   async preregister(data: { email: string }): Promise<APIResponse<PreRegisterResponse>> {
-    return request<PreRegisterResponse>(API_ENDPOINTS.PREREGISTER, {
+    return FetchClient.makeRequest<PreRegisterResponse>(API_ENDPOINTS.PREREGISTER, {
       method: "POST",
       body: JSON.stringify(data),
     });
   }
 
   async login(payload: LoginRequest): Promise<APIResponse<LoginResponseData>> {
-    return request<LoginResponseData>(API_ENDPOINTS.LOGIN, {
+    return FetchClient.makeRequest<LoginResponseData>(API_ENDPOINTS.LOGIN, {
       method: "POST",
       body: JSON.stringify(payload),
     });
   }
 
   async signup(payload: SignupRequest): Promise<APIResponse<SignupResponseData>> {
-    return request<SignupResponseData>(API_ENDPOINTS.SIGNUP, {
+    return FetchClient.makeRequest<SignupResponseData>(API_ENDPOINTS.SIGNUP, {
       method: "POST",
       body: JSON.stringify(payload),
     });
   }
 
   async verifyOTP(payload: VerifyOTPRequest): Promise<APIResponse<LoginResponseData>> {
-    return request<LoginResponseData>(API_ENDPOINTS.VERIFY_OTP, {
+    return FetchClient.makeRequest<LoginResponseData>(API_ENDPOINTS.VERIFY_OTP, {
       method: "POST",
       body: JSON.stringify(payload),
     });
   }
 
   async verify2FA(payload: Verify2FARequest): Promise<APIResponse<LoginResponseData>> {
-    return request<LoginResponseData>(API_ENDPOINTS.VERIFY_2FA, {
+    return FetchClient.makeRequest<LoginResponseData>(API_ENDPOINTS.VERIFY_2FA, {
       method: "POST",
       body: JSON.stringify(payload),
     });
   }
 
   async forgotPassword(payload: ForgotPasswordRequest): Promise<APIResponse> {
-    return request(API_ENDPOINTS.FORGOT_PASSWORD, {
+    return FetchClient.makeRequest(API_ENDPOINTS.FORGOT_PASSWORD, {
       method: "POST",
       body: JSON.stringify(payload),
     });
   }
 
   async resetPassword(payload: ResetPasswordRequest): Promise<APIResponse> {
-    return request(API_ENDPOINTS.RESET_PASSWORD, {
+    return FetchClient.makeRequest(API_ENDPOINTS.RESET_PASSWORD, {
       method: "POST",
       body: JSON.stringify(payload),
     });
   }
 
   async refreshToken(refreshToken: string): Promise<APIResponse<AuthTokens>> {
-    return request<AuthTokens>(API_ENDPOINTS.REFRESH_TOKEN, {
+    return FetchClient.makeRequest<AuthTokens>(API_ENDPOINTS.REFRESH_TOKEN, {
       method: "POST",
       body: JSON.stringify({ refresh_token: refreshToken }),
     });
