@@ -1,0 +1,130 @@
+.toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .toast {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 280px;
+    max-width: 380px;
+    padding: 0.875rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    animation: slideIn 0.2s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .toast-exit {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.2s ease-in;
+  }
+  
+  /* Clean, flat color scheme */
+  .toast-success {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+    color: #065f46;
+  }
+  
+  .toast-success .toast-icon {
+    background: #10b981;
+    color: white;
+  }
+  
+  .toast-error {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #991b1b;
+  }
+  
+  .toast-error .toast-icon {
+    background: #ef4444;
+    color: white;
+  }
+  
+  .toast-warning {
+    background: #fffbeb;
+    border-color: #fde68a;
+    color: #92400e;
+  }
+  
+  .toast-warning .toast-icon {
+    background: #f59e0b;
+    color: white;
+  }
+  
+  .toast-info {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1e40af;
+  }
+  
+  .toast-info .toast-icon {
+    background: #3b82f6;
+    color: white;
+  }
+  
+  .toast-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+  
+  .toast-message {
+    flex: 1;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.4;
+  }
+  
+  .toast-close {
+    background: transparent;
+    border: none;
+    color: currentColor;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+    flex-shrink: 0;
+    border-radius: 4px;
+  }
+  
+  .toast-close:hover {
+    opacity: 1;
+  }
+  
+  .toast-close:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+    opacity: 1;
+  }
+  

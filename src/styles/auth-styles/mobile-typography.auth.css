@@ -1,0 +1,158 @@
+/* Mobile Typography - Text styles for auth forms */
+
+@media (max-width: 768px) {
+
+    /* Mobile headings */
+    .formContainer h2 {
+        font-family: NyghtSerif-LightItalic, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        font-size: clamp(2rem, 6vw, 2.5rem);
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: clamp(0.8rem, 2.5vw, 1.2rem);
+        margin-top: 0;
+        color: #000000;
+        line-height: 1.2;
+    }
+
+    /* Mobile subtitles */
+    .subtitle {
+        font-family: Arial, sans-serif;
+        color: #666666;
+        font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+        text-align: center;
+        line-height: 1.4;
+        margin-bottom: clamp(1.5rem, 4vw, 2rem);
+        opacity: 1;
+        max-width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Mobile labels */
+    .inputGroup label {
+        font-family: Arial, sans-serif;
+        font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+        font-weight: 500;
+        color: #000000;
+        margin-bottom: clamp(0.5rem, 2vw, 0.8rem);
+        display: block;
+        text-align: left;
+    }
+
+    /* Mobile options text */
+    .options {
+        font-family: Arial, sans-serif;
+        font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+        color: #000000;
+    }
+
+    .options label {
+        font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+        color: #000000;
+        cursor: pointer;
+    }
+
+    .options a {
+        font-family: Arial, sans-serif;
+        color: #000000;
+        text-decoration: underline;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .options a:hover {
+        color: #333333;
+    }
+
+    /* Mobile divider text */
+    .divider span {
+        font-family: Arial, sans-serif;
+        font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+        color: #666;
+    }
+
+    /* Mobile switch mode text */
+    .switchMode p {
+        font-family: Arial, sans-serif;
+        font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+        color: #666;
+        margin: 0;
+    }
+
+    .switchModeButton {
+        font-family: Arial, sans-serif;
+        font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+        color: #000000;
+        font-weight: 500;
+    }
+
+    /* Mobile resend link */
+    .resendLink {
+        font-family: Arial, sans-serif;
+        color: #000000;
+        text-decoration: none;
+        font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+        font-weight: 500;
+        background: none;
+        border: none;
+        outline: none;
+    }
+
+    .displayMessage {
+        color: #2E7D32;
+        background-color: #C8E6C9;
+        padding: 0.75rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        text-align: center;
+        border: 1px solid #2E7D32;
+    }
+
+    /* Mobile error messages */
+    .errorMessage {
+        width: 100%;
+        background-color: rgba(211, 47, 47, 0.1);
+        border: 1px solid rgba(211, 47, 47, 0.3);
+        color: #d32f2f;
+        padding: clamp(0.8rem, 2.5vw, 1rem);
+        border-radius: clamp(8px, 2vw, 12px);
+        margin-bottom: clamp(1rem, 3vw, 1.5rem);
+        text-align: center;
+        font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+        font-family: Arial, sans-serif;
+    }
+}
+
+/* Small mobile typography adjustments */
+@media (max-width: 480px) {
+    .formContainer h2 {
+        font-size: clamp(2rem, 6vw, 2.5rem);
+        margin-bottom: clamp(0.8rem, 2.5vw, 1.2rem);
+    }
+
+    .subtitle {
+        font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+        margin-bottom: clamp(1.8rem, 4.5vw, 2.2rem);
+        line-height: 1.4;
+    }
+}
+
+/* Extra small mobile typography */
+@media (max-width: 375px) {
+    .formContainer h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 1.8rem;
+        line-height: 1.4;
+    }
+
+    .inputGroup label,
+    .options,
+    .options label {
+        font-size: 0.8rem;
+    }
+}

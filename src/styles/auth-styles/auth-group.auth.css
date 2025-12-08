@@ -1,0 +1,180 @@
+/* Auth Group Styles - Login, Signup, OTP, Password pages */
+
+/* Desktop Auth Group Styles */
+@media (min-width: 769px) {
+    .loginPage.authGroup .formSection.authFormSection {
+        width: 45%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        box-sizing: border-box;
+    }
+
+    .loginPage.authGroup .formContainer.authFormContainer {
+        width: 100%;
+        max-width: 550px;
+        text-align: center;
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
+/* Mobile Auth Group Styles */
+@media (max-width: 768px) {
+    .loginPage.authGroup {
+        background: url('/assets/images/background-image/backgroundImage.png') no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+        min-height: 100vh;
+        min-height: 100dvh;
+        height: 100vh;
+        height: 100dvh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(1rem, 4vw, 2rem);
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+    }
+
+    /* Mobile logo for auth group */
+    .loginPage.authGroup::before {
+        content: 'LawVriksh';
+        font-family: NyghtSerif-Light, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        color: #fff;
+        font-size: clamp(1.8rem, 5vw, 2.2rem);
+        font-weight: 300;
+        text-align: center;
+        letter-spacing: 0.5px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        position: absolute;
+        top: clamp(2rem, 8vh, 4rem);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        width: auto;
+    }
+
+    /* Mobile logo underline for auth group */
+    .loginPage.authGroup::after {
+        content: '';
+        position: absolute;
+        top: clamp(4rem, 12vh, 6rem);
+        left: 50%;
+        transform: translateX(-50%);
+        width: clamp(60px, 15vw, 80px);
+        height: 2px;
+        background-color: #D4AF37;
+        box-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
+        z-index: 2;
+    }
+
+    .loginPage.authGroup .formSection.authFormSection {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0;
+        min-height: auto;
+    }
+
+    .loginPage.authGroup .formContainer.authFormContainer {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 0;
+        padding: clamp(2rem, 6vw, 3rem);
+        border: none;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        width: 100%;
+        max-width: min(85vw, 100vw);
+        margin: 0 auto;
+        position: relative;
+        min-height: auto;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        margin-top: clamp(6rem, 15vh, 8rem);
+    }
+
+    /* Enhanced glass effect for auth group */
+    .loginPage.authGroup .formContainer.authFormContainer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                rgba(255, 255, 255, 0.1) 100%);
+        border-radius: clamp(16px, 4vw, 24px);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* Ensure content is above glass effect */
+    .loginPage.authGroup .formContainer.authFormContainer>* {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+/* Small mobile adjustments for auth group */
+@media (max-width: 480px) {
+    .loginPage.authGroup::before {
+        top: clamp(1.5rem, 6vh, 3rem);
+        font-size: clamp(1.6rem, 4.5vw, 2rem);
+    }
+
+    .loginPage.authGroup::after {
+        top: clamp(3rem, 10vh, 4.5rem);
+    }
+
+    .loginPage.authGroup .formContainer.authFormContainer {
+        max-width: min(92vw, 360px);
+        padding: clamp(1.5rem, 5vw, 2.5rem);
+        margin-top: clamp(4.5rem, 12vh, 6rem);
+    }
+}
+
+/* Extra small mobile for auth group */
+@media (max-width: 375px) {
+    .loginPage.authGroup::before {
+        top: 1.5rem;
+        font-size: 1.5rem;
+    }
+
+    .loginPage.authGroup::after {
+        top: 2.8rem;
+        width: 60px;
+    }
+
+    .loginPage.authGroup .formContainer.authFormContainer {
+        max-width: 320px;
+        padding: 1.5rem 1.2rem 2rem 1.2rem;
+        margin-top: 4rem;
+    }
+}

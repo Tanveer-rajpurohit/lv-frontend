@@ -1,0 +1,85 @@
+/* Import all mobile modules */
+@import './mobile-base.auth.css';
+@import './mobile-typography.auth.css';
+@import './mobile-forms.auth.css';
+
+/* Mobile Auth Styles - Main mobile CSS for Login, Signup, OTP, and Password pages */
+
+/* Additional mobile-specific overrides and utilities */
+@media (max-width: 768px) {
+
+
+    /* Mobile-specific animations */
+    .formContainer {
+        animation: slideInUp 0.5s ease-out;
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Mobile touch improvements */
+    .loginButton,
+    .socialButton,
+    .switchModeButton,
+    .passwordToggle {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    /* Mobile accessibility improvements */
+    .inputGroup input:focus,
+    .passcodeInputs input:focus,
+    .loginButton:focus,
+    .socialButton:focus {
+        outline: 2px solid rgba(0, 0, 0, 0.2);
+        outline-offset: 2px;
+    }
+
+    /* Mobile performance optimizations */
+    .formContainer {
+        will-change: transform;
+        transform: translateZ(0);
+    }
+
+    /* Mobile scrolling improvements */
+    .loginPage {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) and (max-width: 768px) {
+    .formContainer {
+        background: rgba(255, 255, 255, 1);
+        border: 2px solid #000;
+    }
+
+    .inputGroup input[type="email"],
+    .inputGroup input[type="password"],
+    .inputGroup input[type="text"],
+    .passcodeInputs input {
+        border: 1px solid #666;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) and (max-width: 768px) {
+    .formContainer {
+        animation: none;
+    }
+
+    .loginButton,
+    .socialButton {
+        transition: none;
+    }
+}

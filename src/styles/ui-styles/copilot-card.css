@@ -1,0 +1,304 @@
+/* Base card styles */
+.mode-card {
+    border-radius: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    overflow: hidden;
+  }
+  
+  /* Card Header */
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  /* Verdict Badge */
+  .verdict-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .verdict-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #f59e0b;
+    text-transform: capitalize;
+    border-radius: 4px;
+    padding: 4px 8px;
+    background-color: #ffdea5;
+    border: 1px solid #f59e0b;
+  }
+  
+  .verdict-percentage {
+    font-size: 13px;
+    color: #666666;
+    font-weight: 500;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999999;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+  }
+  
+  .close-button:hover {
+    color: #333333;
+  }
+  
+  /* Card Content */
+  .card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Sections */
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333333;
+    margin: 0;
+    text-transform: capitalize;
+    letter-spacing: 0.3px;
+  }
+  
+  .section-content {
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333333;
+  }
+  
+  /* Current text styling */
+  .current-text {
+    background-color: #f5f5f5;
+    border: 1px solid #e8e8e8;
+  }
+  
+  /* Suggested correction styling (green background) */
+  .suggested-correction {
+    background-color: #f0fdf4;
+    border: 1px solid #dcfce7;
+    color: #166534;
+  }
+  
+  /* Justification styling (beige/yellow background) */
+  .justification {
+    background-color: #fffbeb;
+    border: 1px solid #fef3c7;
+  }
+  
+  .policies-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .policy-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    background-color: #e5e5e5;
+    border-radius: 16px;
+    font-size: 12px;
+    color: #333333;
+    width: fit-content;
+  }
+  
+  .justification-text {
+    font-size: 13px;
+    color: #666666;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  /* Argument text styling */
+  .argument-text {
+    background-color: #f5f5f5;
+    border: 1px solid #e8e8e8;
+  }
+  
+  .argument-header {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+    margin: 0;
+  }
+  
+  /* Score section */
+  .score-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+  }
+  
+  .score-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333333;
+  }
+  
+  /* Percentage Circle */
+  .percentage-circle {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .circle-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+  
+  .circle-bg {
+    fill: none;
+    stroke: #e8e8e8;
+    stroke-width: 4;
+  }
+  
+  .circle-progress {
+    fill: none;
+    stroke: #f59e0b;
+    stroke-width: 4;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.3s ease;
+  }
+  
+  .percentage-text {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    color: #f59e0b;
+  }
+  
+  /* Actions */
+  .actions {
+    display: flex;
+    gap: 12px;
+    padding-top: 12px;
+  }
+  
+  .action-button {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .action-button.accept {
+    background-color: #2563eb;
+    color: #ffffff;
+  }
+  
+  .action-button.accept:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .action-button.dismiss {
+    background-color: transparent;
+    color: #666666;
+    border: 1px solid #e5e5e5;
+  }
+  
+  .action-button.dismiss:hover {
+    background-color: #f5f5f5;
+    border-color: #d0d0d0;
+  }
+  
+  /* Fact Checker Card */
+  .fact-checker-card {
+    max-width: 400px;
+  }
+  
+  /* Compliance Card */
+  .compliance-card {
+    max-width: 400px;
+  }
+  
+  /* Argument Card */
+  .argument-card {
+    max-width: 400px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .mode-card {
+      max-width: 100%;
+    }
+  
+    .card-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  
+    .verdict-badge {
+      width: 100%;
+    }
+  
+    .card-content {
+      padding: 16px;
+      gap: 16px;
+    }
+  
+    .actions {
+      flex-direction: column;
+    }
+  
+    .action-button {
+      width: 100%;
+    }
+  
+    .score-section {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  
+    .percentage-circle {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .percentage-text {
+      font-size: 16px;
+    }
+  }
+  

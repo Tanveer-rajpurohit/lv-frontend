@@ -1,0 +1,49 @@
+/* Progress Bar Component Styles */
+
+.progressBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 20px;
+    max-height: 45px;
+    background-color: rgba(212, 175, 55, 0.3);
+    z-index: 100;
+    overflow: hidden;
+}
+
+.creatorApplication {
+    height: 45px;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, #D4AF37, #E6C547);
+    box-shadow: 0 2px 4px rgba(212, 175, 55, 0.4);
+    transition: width 0.8s ease-out;
+    border-radius: inherit;
+}
+
+/* Desktop adjustments */
+@media (min-width: 769px) {
+
+    /* Desktop setup pages - match form container border radius */
+    .loginPage.setupGroup .progressBar {
+        border-top-left-radius: clamp(0.75rem, 1vh, 1.25rem);
+        border-top-right-radius: clamp(0.75rem, 1vh, 1.25rem);
+    }
+
+    /* Desktop auth pages - rounded corners */
+    .loginPage.authGroup .progressBar {
+        border-top-left-radius: clamp(16px, 4vw, 24px);
+        border-top-right-radius: clamp(16px, 4vw, 24px);
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .progressBar {
+        display: none;
+    }
+}

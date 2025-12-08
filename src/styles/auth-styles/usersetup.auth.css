@@ -1,0 +1,241 @@
+/* User Setup Form Specific Styles */
+
+.NameButton {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    line-height: 1 !important;
+}
+
+
+.formSection.fullWidth .NameInput {
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4rem;
+}
+
+/* Desktop input styles */
+.formSection.fullWidth .NameInput input[type="text"] {
+    width: 600px;
+    max-width: 600px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 25px;
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: NyghtSerif-Light, Arial, sans-serif;
+    font-weight: 300;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: block;
+    height: auto;
+    min-height: 60px;
+}
+
+@media (max-width: 768px) {
+    .formSection.fullWidth .NameInput input[type="text"] {
+        width: 300px;
+        padding: 0 1rem;
+    }
+
+    .NameButton {
+        margin-bottom: 0 !important;
+    }
+}
+
+.formSection.fullWidth .NameInput input[type="text"]:focus {
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.formSection.fullWidth .NameInput input[type="text"]::placeholder {
+    color: #999;
+}
+
+.formSection.fullWidth .OnBackButton {
+    width: auto;
+    min-width: 100px;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+    background-color: transparent;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-family: NyghtSerif-Light, Arial, sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.inputField,
+.textareaField,
+select {
+    width: 100%;
+    max-width: 90%;
+    /* instead of hard 600px */
+    margin-bottom: 2rem;
+    padding: clamp(1rem, 2vw, 1.5rem) clamp(1.2rem, 3vw, 2rem);
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    text-align: center;
+    border: none;
+    border-radius: 25px;
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: "NyghtSerif-Light", Arial, sans-serif;
+    box-sizing: border-box;
+    min-height: 50px;
+    transition: all 0.2s ease-in-out;
+}
+
+.inputField:focus,
+.textareaField:focus,
+select:focus {
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.formSection.fullWidth .NameButton {
+    width: auto;
+    height: 42px;
+    min-width: 100px;
+    padding: 10px;
+    font-size: 0.9rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-family: NyghtSerif-Light, Arial, sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.formActions {
+    height: 100%;
+    position: absolute;
+    bottom: 5rem;
+    right: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 10px;
+}
+
+.formActionsInterest {
+    position: absolute;
+    bottom: 4rem;
+    right: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.formActionsProfession {
+    position: absolute;
+    bottom: 5rem;
+    right: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+}
+
+/*extra large height screen*/
+@media (min-height: 1000px) and (min-width: 1200px) {
+    .formActions {
+        transform: translate(-20%, -20%);
+    }
+}
+
+/* Mobile responsive styles for User Setup */
+@media (max-width: 660px) {
+
+    .formActions {
+        position: static;
+        display: flex;
+        justify-content: flex-end;
+        align-items: end;
+        gap: 10px;
+    }
+
+    .NameButton {
+        margin-right: 20px !important;
+    }
+
+    .formActionsInterest {
+        margin-top: 3rem;
+        position: static;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .formActionsProfession {
+        margin-top: 0;
+        position: absolute;
+        bottom: -4rem;
+        right: 1rem;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .formSection.fullWidth .NameInput {
+        width: 100%;
+        margin-bottom: 3rem;
+    }
+
+    .formSection.fullWidth {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .formSection.fullWidth h2 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .formSection.fullWidth .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 3rem;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 460px) {
+    .formActionsProfession {
+        position: absolute;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 10px;
+        bottom: 0;
+    }
+}
+
+/* Mobile styles handled by MobileProfile.css */
+
+
+/* Background styles handled by base CSS files */

@@ -1,0 +1,171 @@
+/* Group Specific Styles - Different styling for Auth vs Setup groups */
+
+/* Auth Group Typography */
+.loginPage.authGroup .formContainer.authFormContainer h2 {
+    font-family: var(--font-playfair), "Playfair Display", serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    color: #000000;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.loginPage.authGroup .formContainer.authFormContainer .subtitle {
+    font-family: NightSerif-Regular, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Setup Group Typography */
+.loginPage.setupGroup .formContainer.setupFormContainer h2 {
+    font-family: NyghtSerif-LightItalic, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-size: 4.5rem;
+    font-weight: 300;
+    color: #000000;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loginPage.setupGroup .formContainer.setupFormContainer .subtitle {
+    font-family: Arial, sans-serif;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 4rem;
+    max-width: 600px;
+    text-align: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Tablet Typography Adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .loginPage.setupGroup .formContainer.setupFormContainer h2 {
+        font-size: clamp(3.5rem, 5vh, 4rem);
+        margin-bottom: clamp(1.5rem, 2vh, 2rem);
+        line-height: 1.1;
+        text-align: center;
+        width: 100%;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .loginPage.setupGroup .formContainer.setupFormContainer .subtitle {
+        font-size: clamp(0.9rem, 1.2vh, 1rem);
+        line-height: 1.6;
+        margin-bottom: clamp(2.5rem, 3vh, 3rem);
+        max-width: 550px;
+        text-align: center;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Mobile Typography Adjustments */
+@media (max-width: 768px) {
+    .loginPage.authGroup .formContainer.authFormContainer h2 {
+        font-size: clamp(2.2rem, 7vw, 2.8rem);
+        margin-bottom: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    .loginPage.authGroup .formContainer.authFormContainer .subtitle {
+        font-size: clamp(0.85rem, 2.8vw, 1rem);
+        margin-bottom: clamp(2rem, 5vw, 2.5rem);
+        max-width: 90%;
+    }
+
+    .loginPage.setupGroup .formContainer.setupFormContainer h2 {
+        font-size: clamp(1.6rem, 10vw, 5rem);
+        margin-bottom: clamp(0.75rem, 2.5vw, 1rem);
+        text-align: center;
+        width: 100%;
+    }
+
+    .loginPage.setupGroup .formContainer.setupFormContainer .subtitle {
+        font-size: clamp(0.85rem, 2.8vw, 0.95rem);
+        margin-bottom: clamp(1.25rem, 4vw, 1.75rem);
+        max-width: 100%;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/* Auth Group Form Elements */
+.loginPage.authGroup .inputGroup {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loginPage.authGroup .loginButton {
+    width: 80%;
+    height: 50px;
+    padding: 1px 1.2rem;
+    margin: 1rem auto 0;
+    display: block;
+}
+
+/* Setup Group Form Elements */
+.loginPage.setupGroup .inputGroup {
+    margin-bottom: 3rem;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loginPage.setupGroup .loginButton {
+    width: auto;
+    height: 44px;
+    min-width: 120px;
+    margin-left: auto;
+    display: block;
+}
+
+/* Mobile Form Element Adjustments */
+@media (max-width: 768px) {
+    .loginPage.authGroup .inputGroup {
+        width: 100%;
+        margin-bottom: clamp(1.2rem, 4vw, 1.8rem);
+    }
+
+    .loginPage.authGroup .loginButton {
+        width: 100%;
+        margin-top: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    .loginPage.setupGroup .inputGroup {
+        width: 100%;
+        margin-bottom: clamp(2rem, 5vw, 3rem);
+    }
+
+
+
+    .loginPage.setupGroup .loginButton {
+        margin-top: clamp(2rem, 5vw, 3rem);
+        min-width: clamp(100px, 25vw, 140px);
+    }
+}
+
+@media (max-width: 375px) {
+    .loginPage.setupGroup .formContainer.setupFormContainer h2 {
+        margin-bottom: 0;
+    }
+}

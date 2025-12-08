@@ -1,0 +1,90 @@
+/* plain CSS styles to match the provided badge design */
+
+/* Theming via CSS variables (can be overridden via style prop) */
+.progress-badge {
+    --pb-bg: #fff4d1;
+    /* soft pale yellow background */
+    --pb-text: #9a7a2a;
+    /* golden-brown text color */
+    --pb-ring: #d9b44a;
+    /* progress ring color */
+    --pb-track: #f3e5b3;
+    /* track color (lighter yellow) */
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--pb-bg);
+    color: var(--pb-text);
+    border-radius: 9999px;
+    padding: 6px 10px 6px 6px;
+    line-height: 1;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+}
+
+.progress-badge__circle {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.progress-badge__svg {
+    display: block;
+}
+
+.progress-badge__track {
+    stroke: var(--pb-track);
+    opacity: 1;
+}
+
+.progress-badge__progress {
+    stroke: var(--pb-ring);
+}
+
+.progress-badge__percent {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--pb-text);
+    user-select: none;
+}
+
+.progress-badge__label {
+    font-size: 14px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+/* Optional: hover focus subtle elevation for interactivity (no color changes) */
+.progress-badge:where(a, button, .is-interactive):hover {
+    filter: brightness(0.99);
+}
+
+.header-progress-badge {
+    padding: 1.5px 8px;
+}
+
+.quality-badge {
+    padding: 1.5px 0;
+    padding-right: 6px;
+    width: fit-content;
+}
+
+
+@media (max-width: 768px) {
+    .progress-badge .quality-badge .progress-badge__label {
+        display: none;
+    }
+
+    .quality-badge {
+        width: fit-content;
+    }
+
+    .header-progress-badge {
+        display: none;
+    }
+}
