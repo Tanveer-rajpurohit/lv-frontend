@@ -1,0 +1,617 @@
+/* Professional Editor.js Styling */
+
+.editor-js-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a !important;
+  font-size: 16px;
+  padding: 20px 0;
+  max-width: 100%;
+  outline: none;
+  background: white !important;
+}
+
+.editor-js-container:focus {
+  outline: none;
+}
+
+/* Block Styles */
+.codex-editor__redactor {
+  padding-bottom: 100px !important;
+}
+
+.ce-block {
+  margin: 0 0 8px 0;
+}
+
+.ce-block--selected,
+.ce-block--drop-target,
+.ce-block:hover {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Header Blocks */
+.ce-header {
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 24px 0 16px 0;
+  color: #1a1a1a !important;
+}
+
+/* Add the missing #editorjs header styles from reference */
+#editorjs h1 {
+  font-size: 2.25rem; /* Tailwind: text-3xl */
+  font-weight: 700; /* Tailwind: font-bold */
+  line-height: 1.3;
+  color: #1a1a1a !important;
+  display: block !important;
+  visibility: visible !important;
+}
+
+#editorjs h2 {
+  font-size: 1.875rem; /* Tailwind: text-2xl */
+  font-weight: 600; /* Tailwind: font-semibold */
+  line-height: 1.3;
+  color: #1a1a1a !important;
+  display: block !important;
+  visibility: visible !important;
+}
+
+#editorjs h3 {
+  font-size: 1.5rem; /* Tailwind: text-xl */
+  font-weight: 500; /* Tailwind: font-medium */
+  line-height: 1.3;
+  color: #1a1a1a !important;
+  display: block !important;
+  visibility: visible !important;
+}
+
+#editorjs h4 {
+  font-size: 1.25rem; /* Tailwind: text-lg */
+  font-weight: 500; /* Tailwind: font-medium */
+  line-height: 1.3;
+  color: #1a1a1a !important;
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* Keep the existing ce-header styles for compatibility */
+.ce-header[data-level="1"] {
+  font-size: 2.25rem;
+  margin: 32px 0 20px 0;
+  border-bottom: 2px solid #e5e5e5;
+  padding-bottom: 12px;
+}
+
+.ce-header[data-level="2"] {
+  font-size: 1.875rem;
+  margin: 28px 0 16px 0;
+}
+
+.ce-header[data-level="3"] {
+  font-size: 1.5rem;
+  margin: 24px 0 14px 0;
+}
+
+/* Paragraph Block */
+.ce-paragraph {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 8px 0;
+  color: #1a1a1a !important;
+}
+
+.ce-paragraph[data-placeholder]:empty:before {
+  content: attr(data-placeholder);
+  color: #9ca3af !important;
+  font-style: italic;
+}
+
+/* List Blocks */
+.ce-list {
+  margin: 8px 0;
+}
+
+.ce-list--ordered {
+  list-style: none;
+  counter-reset: list-counter;
+}
+
+.ce-list--ordered .ce-list__item {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 4px;
+  counter-increment: list-counter;
+}
+
+.ce-list--ordered .ce-list__item:before {
+  content: counter(list-counter) ".";
+  position: absolute;
+  left: 0;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.ce-list--unordered .ce-list__item {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 4px;
+}
+
+.ce-list--unordered .ce-list__item:before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  color: #6b7280;
+}
+
+/* Checklist Block */
+.ce-checklist {
+  margin: 8px 0;
+}
+
+.ce-checklist__item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.ce-checklist__checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  margin-right: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ce-checklist__checkbox--checked {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+/* Quote Block */
+.ce-quote {
+  border-left: 4px solid #3b82f6;
+  padding: 16px 20px;
+  margin: 20px 0;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 0 8px 8px 0;
+}
+
+.ce-quote__text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #374151;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+/* Table Block */
+.ce-table {
+  margin: 20px 0;
+  width: 100%;
+}
+
+.ce-table table {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.ce-table th,
+.ce-table td {
+  border: 1px solid #e5e7eb;
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.ce-table th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Code Block */
+.ce-code {
+  background: #f8f9fa;
+  color: #1a1a1a;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  font-family: "Monaco", "Menlo", monospace;
+  font-size: 14px;
+  border: 1px solid #e5e7eb;
+  overflow-x: auto;
+}
+
+.ce-code textarea {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  resize: none;
+  width: 100%;
+}
+
+/* Inline Elements */
+.ce-inline-code {
+  background: #f3f4f6;
+  color: #ef4444;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "Monaco", "Menlo", monospace;
+  font-size: 14px;
+}
+
+/* Marker highlighting with 5 color options */
+mark {
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+mark.marker-yellow {
+  background: #ffc107;
+  color: #1a1a1a;
+}
+
+mark.marker-red {
+  background: #ff5722;
+  color: white;
+}
+
+mark.marker-blue {
+  background: #2196f3;
+  color: white;
+}
+
+mark.marker-green {
+  background: #4caf50;
+  color: white;
+}
+
+mark.marker-purple {
+  background: #9c27b0;
+  color: white;
+}
+
+/* Text color support for inline text */
+span[style*="color"] {
+  /* Removed font-weight to prevent text width/styling changes when applying color */
+}
+
+/* Image Block */
+.ce-image {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.ce-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Toolbar Styles */
+.ce-toolbar {
+  background: transparent !important;
+  border: none !important;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+/* Remove black border/box around selected paragraphs and cursor focus */
+.ce-block--selected {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.ce-block--focused {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove selection borders from all block types when cursor is on them */
+.ce-paragraph:focus,
+.ce-header:focus,
+.ce-list__item:focus,
+.ce-checklist__item:focus,
+.ce-quote:focus,
+.ce-table:focus,
+.ce-code:focus {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove any selection boxes on hover */
+.ce-block:hover {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Also remove focus states from contenteditable elements */
+[contenteditable]:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.ce-toolbar__plus {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: transparent !important;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.ce-toolbar__plus:hover {
+  background: #f3f4f6 !important;
+}
+
+.ce-toolbar__settings {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: transparent !important;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ce-toolbar__settings:hover {
+  background: #f3f4f6 !important;
+}
+
+/* Inline Toolbar */
+
+
+.ce-inline-button {
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.ce-inline-button:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.ce-inline-button.ce-inline-button--active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+/* Color Picker for Markers - 5 colors */
+.color-picker-toolbar {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+}
+
+.color-option {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.color-option:hover {
+  transform: scale(1.1);
+  border-color: #9ca3af;
+}
+
+.color-option.active {
+  border-color: #1a1a1a;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #1a1a1a;
+}
+
+/* Text color options */
+.text-color-options {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-left: 1px solid #e5e7eb;
+  padding-left: 8px;
+}
+
+/* Add color picker dropdown styles */
+.color-picker-dropdown {
+  position: absolute;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  padding: 10px;
+  min-width: auto;
+}
+
+.color-picker-header {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6b7280;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Changed from grid to row layout */
+.color-picker-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 280px;
+}
+
+/* Circular color buttons - SMALLER SIZE */
+.color-picker-circle,
+.marker-picker-circle {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #d1d5db;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a1a1a;
+}
+
+.color-picker-circle:hover,
+.marker-picker-circle:hover {
+  transform: scale(1.15);
+  border-color: #3b82f6;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.color-picker-circle:active,
+.marker-picker-circle:active {
+  transform: scale(0.95);
+}
+
+.color-picker-circle[data-default="true"],
+.marker-picker-circle[data-default="true"] {
+  background: #f3f4f6;
+  border: 2px dashed #9ca3af;
+  color: #6b7280;
+}
+
+/* Grid layout for all colors to be visible */
+.color-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.color-picker-item {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 700;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.color-picker-item:hover {
+  transform: scale(1.08);
+  border-color: #9ca3af;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.color-picker-item:active {
+  transform: scale(0.95);
+}
+
+/* Add marker picker styles */
+.marker-picker-dropdown {
+  position: absolute;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  padding: 10px;
+  min-width: auto;
+}
+
+.marker-picker-item {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 700;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-picker-item:hover {
+  transform: scale(1.08);
+  border-color: #9ca3af;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.marker-picker-item:active {
+  transform: scale(0.95);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .editor-js-container {
+    font-size: 15px;
+    padding: 12px 0;
+  }
+
+  .ce-header[data-level="1"] {
+    font-size: 24px;
+  }
+
+  .ce-header[data-level="2"] {
+    font-size: 20px;
+  }
+}
+
+/* Selection highlight */
+::selection {
+  background: rgba(59, 130, 246, 0.2);
+  color: #1a1a1a;
+}
+
+/* Format styles */
+b,
+strong {
+  font-weight: 700;
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+u {
+  text-decoration: underline;
+}
